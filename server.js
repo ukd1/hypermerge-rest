@@ -30,9 +30,14 @@ hm.once('ready', () => {
     `))
 
   app.get('/redirect', function (req, res) {
-    parsed = _shareLink.parseDocumentLink(req.params.q)
+    if (req.query.q.substr(0,11) == 'web+pushpin') {
+      parsed = _shareLink.parseDocumentLink(req.query.q.substr(4))
 
-    res.json({q: req.params.q, parsed: parsed})
+      var link = _shareLink.createDocumentLink(parsed.type, parsed.docId)
+      res.redirect(link.substr(9))
+    } else {
+      res.status(400)
+    }
   })
 
   app.get('/:type/:hash/:crc', function (req, res) {
