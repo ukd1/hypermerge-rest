@@ -24,7 +24,14 @@ hm.once('ready', () => {
 
     res.set('X-PushPin-DocId', parsed.docId);
     res.set('X-PushPin-Ready', hm.readyIndex[parsed.docId])
-    res.json(handle.get())
+
+    doc = handle.get()
+
+    if (doc) {
+      res.json(doc.contents)
+    } else {
+      res.status(202)
+    }
   })
 
   app.put('/:type/:hash/:crc', function (req, res) {
@@ -38,7 +45,7 @@ hm.once('ready', () => {
     })
 
     res.set('X-PushPin-DocId', parsed.docId);
-    res.json(handle.get())
+    res.json(req.body)
   })
 
   app.post('/:type', function (req, res) {
