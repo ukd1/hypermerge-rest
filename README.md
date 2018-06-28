@@ -9,6 +9,10 @@ yarn
 node server.js
 ```
 
+or
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Usage
 
 ### Create
