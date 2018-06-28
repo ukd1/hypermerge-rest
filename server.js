@@ -14,7 +14,24 @@ hm.once('ready', () => {
   hm.joinSwarm()
   app.use( bodyParser.json() )
 
-  app.get('/', (req, res) => res.send('Server ready'))
+  app.get('/', (req, res) => res.send(`
+
+    <script type="text/javascript">
+    navigator.registerProtocolHandler("web+pushpin", "//" + window.location.host + "/redirect?q=%s", "HyperMerge REST");
+    </script>
+
+    <h1>HyperMerge REST</h1>
+
+    <p>Note, you can accept this as a place to open web+pushpin:// links. Then this should work:</p>
+    <p><a href="web+pushpin://some-type/9ahVrn5UZuMusdacs8xsFE2HCtmWfC9R1z4xpAi2AjBY/6Dm">web+pushpin://some-type/9ahVrn5UZuMusdacs8xsFE2HCtmWfC9R1z4xpAi2AjBY/6Dm</a></p>
+
+    <p>Checkout the docs: <a href="https://github.com/ukd1/hypermerge-rest">https://github.com/ukd1/hypermerge-rest</a></p>
+
+    `))
+
+  app.get('/redirect', function (req, res) {
+    res.send('test' + req.params)
+  })
 
   app.get('/:type/:hash/:crc', function (req, res) {
     pp_url = 'pushpin://' + req.params.type + '/' + req.params.hash + '/' + req.params.crc
