@@ -8,5 +8,22 @@
     "hypercore": "^6.17.0",
     "hypercore-archiver": "^4.6.0",
     "js-crc": "^0.2.0"
-  }
+  },
+  "name": "hypermerge-rest",
+  "description": "This is a (shitty, un-tested) way to read, write and update things in Hypermerge via REST. It only supports reading JSON as...express.js / body-parsers / it's late.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ukd1/hypermerge-rest.git"
+  },
+  "author": "Russell Smith",
+  "bugs": {
+    "url": "https://github.com/ukd1/hypermerge-rest/issues"
+  },
+  "homepage": "https://github.com/ukd1/hypermerge-rest#readme"
 }
