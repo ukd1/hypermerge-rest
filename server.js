@@ -30,7 +30,9 @@ hm.once('ready', () => {
     `))
 
   app.get('/redirect', function (req, res) {
-    res.send('test' + req.params)
+    parsed = _shareLink.parseDocumentLink(req.params.q)
+
+    res.json({q: req.params.q, parsed: parsed})
   })
 
   app.get('/:type/:hash/:crc', function (req, res) {
